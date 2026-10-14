@@ -1,0 +1,25 @@
+{
+  "task": "Fill my weekly IBM time sheet by copying last week's entries on https://time.ibm.com/ (exclude zero-hour rows, do not submit)",
+  "steps": [
+    {
+      "title": "Open the IBM time sheet and wait for sign-in",
+      "details": "Open the IBM time sheet. \n Navigate to https://time.ibm.com/. If an IBMid / w3id sign-in or two-factor page appears, do NOT type any credentials: stop and ask the user to take control of the browser, sign in, and hand control back. Continue only when the current week's time sheet is visible.",
+      "agent_name": "web_surfer"
+    },
+    {
+      "title": "Copy entries from the previous week",
+      "details": "Copy entries from the previous week. \n On the current week's time sheet, find and click the 'Copy from previous week' button (it may be labelled 'Copy previous week' or sit under a Copy / Actions menu). Wait for the copy dialog to open. If the button is missing or the week already has entries, stop and report what you see instead of guessing.",
+      "agent_name": "web_surfer"
+    },
+    {
+      "title": "Exclude zero-hour rows",
+      "details": "Exclude zero-hour rows. \n In the copy dialog, find the checkbox for zero-hour entries (e.g. 'Include zero hours' / 'Copy zero-hour rows') and make sure it is UNCHECKED. Change no other options. Confirm from the dialog that the box is now unchecked.",
+      "agent_name": "web_surfer"
+    },
+    {
+      "title": "Confirm the copy and report the result",
+      "details": "Confirm the copy and report the result. \n Click 'OK' in the copy dialog. Wait for the time sheet to refresh, then report the copied rows (project / activity and hours per day) and the weekly total. Do NOT click Submit or Save-and-submit; leave the time sheet for the user to review and submit.",
+      "agent_name": "web_surfer"
+    }
+  ]
+}

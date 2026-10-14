@@ -1,0 +1,34 @@
+# PUG model configuration — copy to config.yaml (git-ignored) and fill in your values.
+#
+# Auth is keyless: Microsoft Entra ID via your `az login` session
+# (DefaultAzureCredential). Do NOT put API keys in this file.
+# Your account needs the "Cognitive Services OpenAI User" role on the Azure resource.
+
+gpt_client: &gpt_client
+  provider: AzureOpenAIChatCompletionClient
+  config:
+    model: gpt-5.4                                  # model name
+    azure_deployment: <your-deployment-name>        # e.g. gpt-5.4
+    azure_endpoint: https://<your-resource>.openai.azure.com/
+    api_version: "2025-04-01-preview"
+    azure_ad_token_provider:
+      provider: autogen_ext.auth.azure.AzureTokenProvider
+      config:
+        provider_kind: DefaultAzureCredential
+        scopes:
+          - https://cognitiveservices.azure.com/.default
+    model_info:
+      vision: true            # the web surfer reads screenshots
+      function_calling: true
+      json_output: true
+      structured_output: true
+      family: unknown
+      multiple_system_messages: false
+    max_retries: 5
+
+orchestrator_client: *gpt_client
+coder_client: *gpt_client
+web_surfer_client: *gpt_client
+file_surfer_client: *gpt_client
+action_guard_client: *gpt_client
+plan_learning_client: *gpt_client
